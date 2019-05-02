@@ -34,12 +34,8 @@ if not fullcontent.nil? and not fullcontent.search('div')[5].nil?
       }
         
       #p record
-      if ScraperWiki.select("* from data where `council_reference`='#{record['council_reference']}'").empty? 
-        puts "Saving new record " + record['council_reference']
-        ScraperWiki.save_sqlite(['council_reference'], record)
-      else
-        puts "Skipping already saved record " + record['council_reference']
-      end
+      puts "Saving new record " + record['council_reference']
+      ScraperWiki.save_sqlite(['council_reference'], record)
     else
       raise "Unexpected type: #{block.name} #{block}"
     end
